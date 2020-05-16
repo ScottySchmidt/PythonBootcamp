@@ -1,0 +1,117 @@
+# First Assessment: Python Objects and Data Structures:
+# https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/00-Python%20Object%20and%20Data%20Structure%20Basics/09-Objects%20and%20Data%20Structures%20Assessment%20Test.ipynb
+# This first assessment as expeceted was fairly easy so I did not write detailed comments:
+
+
+#Write a brief description of all the following Object Types and Data Structures we've learned about:
+Numbers=int(123) # generally an int or a float
+Strings="This is an example of a string" #uses " "
+Lists=[2, 3, 5, 7] #stores something, in this case there are 4 prime numbers
+Tuples="Similiar to a list but a tuple cannot be changed" 
+Dictionaries={'a':1 , 'b':2} #have unordered key-value pairs
+
+
+#Write an equation that uses multiplication, division, an exponent, addition, and subtraction that is equal to 100.25.
+#Hint: This is just to test your memory of the basic arithmetic commands, work backwards from 100.25
+print(10**2 +1 -.75)
+
+
+# Answer these 3 questions without typing code. Then type code to check your answer.
+# What is the value of the expression 4 * (6 + 5) = 44
+print(4 * (6 + 5) )
+
+# What is the value of the expression 4 * 6 + 5 = 29
+print(4 * 6 + 5)
+
+# What is the value of the expression 4 + 6 * 5 = 34
+print(4 + 6 * 5 )
+
+# What is the type of the result of the expression 3 + 1.5 + 4?
+print ("Float class because it has a decimal", type(3 + 1.5 + 4) )
+
+
+#What would you use to find a number’s square root, as well as its square?
+import math
+rt=math.sqrt(9) #method1
+r=9**.5 #method2
+print(rt, r) 
+
+
+# Print out 'e' using indexing
+s = 'hello'
+print(s[1], "should print e" )
+
+
+# Reverse the string using slicing
+print(s[::-1])
+
+
+# Given the string hello, give two methods of producing the letter 'o' using indexing.
+print(s[-1], s[4])
+
+
+# Build this list [0,0,0] two separate ways.
+l=[]
+l2=[0]*3
+for i in range(3):
+    l.append(0)
+print(l, l2)
+
+
+# Using keys and indexing, grab the 'hello' from the following dictionaries:
+d = {'simple_key':'hello'}
+print(d['simple_key'], "..should print hello")
+
+d = {'k1':{'k2':'hello'}} 
+print(d['k1']['k2'], "..should print hello") # prints hello, correct
+
+# Getting a little tricker
+d = {'k1':[{'nest_key':['this is deep',['hello']]}]}
+print( d['k1'][0]['nest_key'][1] , "..should print hello") #['hello'] ..should print hello
+
+# This will be hard and annoying!
+d = {'k1':[1,2,{'k2':['this is tricky',{'tough':[1,2,['hello']]}]}]}
+print( d['k1'][-1]['k2'][-1]['tough'][-1] , "..should print hello") #-1 goes to back
+
+# Can you sort a dictionary? Why or why not?
+print("You cannot sort a Dictionary because those variables have a key and value.")
+
+# Reassign 'hello' in this nested list to say 'goodbye' instead:
+list3 = [1,2,[3,4,'hello']]
+list3[2][-1]='goodbye'
+print(list3)
+
+# Sort the list below:
+list4 = [5,3,4,6,1]
+sorted(list4)
+
+
+# Use a set to find the unique values of the list below:
+list5 = [1,2,2,33,4,4,11,22,3,3,2]
+unique=set(list5)
+
+
+#What will be the resulting Boolean of the following pieces of code (answer fist then check by typing it in!)
+# Answer before running cell. False
+2 > 3
+
+# Answer before running cell. False
+3 <= 2
+
+# Answer before running cell. False
+3 == 2.0
+
+# Answer before running cell. True
+3.0 == 3
+
+# Answer before running cell. False
+4**0.5 != 2
+
+# Final Question: What is the boolean output of the cell block below?
+
+# two nested lists
+l_one = [1,2,[3,4]]
+l_two = [1,2,{'k1':4}]
+
+# True or False? 3>=4 . False
+l_one[2][0] >= l_two[2]['k1']
