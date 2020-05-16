@@ -1,0 +1,248 @@
+# Functions and Methods Assessment Section: 
+# https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/03-Methods%20and%20Functions/03-Function%20Practice%20Exercises.ipynb
+
+
+# function that returns a capitalized letter for evens only
+def myfunc(string):
+    index=0
+    final=[]
+    length=len(string)
+    while index<length:
+        if index%2==0:
+            final.append( string[index].upper()  )
+            index=index+1
+        elif index%2!=0:
+            final.append( string[index].lower() )
+            index=index+1
+    seperator=''
+    final=seperator.join(final)
+    return final
+         
+
+# LESSER OF TWO EVENS: Write a function that returns the lesser of two given numbers if both numbers are even, 
+# but returns the greater if one or both numbers are odds
+
+def lesser(a, b):
+    if a%2==0 and b%2==0: #if both are even,
+        return min(a, b) #return the smaller one
+    if a%2!=0 or b%2!=0: #if one is odd, 
+        return max(a,b) #return max
+#lesser(4,6)  #correctly returns 4
+#lesser(5, 10) #correctly returns 10
+
+
+# ANIMAL CRACKERS: Write a function takes a two-word string and returns True if both words begin with same letter
+def animal(word1, word2):
+    if word1[0].lower()==word2[0].lower():
+        return True
+#animal("cat", "cap") #Correctly returns True
+#animal("Apple", "are") #Correctly returns True
+        
+
+#MAKES TWENTY: Given two integers, return True if the sum of the integers is 20 or if one of the integers is 20. 
+# If not, return False
+
+def twenty(a, b):
+    if a+b==20:
+        return True
+    else:
+        return False
+#twenty(10, 10) #Correctly retuns True
+#twenty(20, 9) #Correctly returns False
+
+
+#### LEVEL ONE #####
+
+
+# OLD MACDONALD: Write a function that capitalizes the first and fourth letters of a name
+# This was my original attempt which is somewhat ugly and hard to read.
+def cap(name):
+    l=[]
+    i=0
+    for n in name:
+        if i ==0:
+            l.append(name[0].upper() )
+        elif i==3:
+            l.append(name[3].upper() )
+        else:
+            l.append(name[i])
+        i=i+1
+    return l
+cap('scott')
+
+#This is a more readable and simple way to do the above code:
+def capital(name):
+    first=name[0]
+    between=name[1:3]
+    four=name[3]
+    rest=name[4:]
+    
+    return first.upper()+between+four.upper()+rest
+capital("tests")
+    
+
+
+# MASTER YODA: Given a sentence, return a sentence with the words reversed
+# master_yoda('I am home') --> 'home am I'
+# master_yoda('We are ready') --> 'ready are We'
+
+def yoda(string):
+    s=string.split(' ') #['We', 'are', 'ready']
+    r=' '.join(s[:: -1]) # 'ready are We'
+    return r
+yoda('We are ready') #Correctly returns 'ready are We'
+
+
+#ALMOST THERE: Given an integer n, return True if n is within 10 of either 100 or 200
+
+def hundred(n):
+    if n+10>=100 or n-10>=100 or n+10>=200 or n-10>=200:
+        return True
+    
+hundred(90)
+
+##### LEVEL 2 PROBLEMS #######
+
+# This solution uses the same logic as a fibonacci sequence, specifically on Project Euler 2.
+def has_33(nums):
+    first=1 # will always store most recent num
+    second=2 # will evenually put prior num above into
+    for i in nums: # go through each number
+        second=first # second number is always the previous 1
+        first=i # first number is always most recent i
+        if first==3 and second==3: # this means that two 3's were next to each other
+            return True
+    else:
+        return False # if went through every num, return False
+#has_33([1, 3, 3]) #correct returns True
+#has_33([1, 3, 1, 3]) #correct returns False
+#has_33([3, 1, 3]) #correct returns False
+
+
+    
+# PAPER DOLL: Given a string, return a string where for every character in the original there are three characters¶ 
+# paper_doll('Hello') --> 'HHHeeellllllooo'
+# paper_doll('Mississippi') --> 'MMMiiissssssiiippppppiii'
+
+def paper(string):
+    final='' #must be a string as '' to 'H'+'H' later
+    for s in string: #get every letter in string
+        final=final+s*3 #or can do s+s+s
+    print(final)
+paper('Hello') # Correct, returns HHHeeellllllooo
+
+
+# BLACKJACK: Given three integers between 1 and 11, if their sum is less than or equal to 21, return their sum. 
+#If their sum exceeds 21 and there's an eleven, reduce the total sum by 10. 
+#Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
+# blackjack(5,6,7) --> 18
+# blackjack(9,9,9) --> 'BUST'
+# blackjack(9,9,11) --> 19
+
+def blackjack(a, b, c ):
+    summ=a+b+c
+    if (summ>21) and (a==11 or b==11 or c==11): 
+        print(summ-10)
+    elif summ>21:
+        print("BUST")
+    else:
+        print(summ)
+#blackjack(5,6,7) # correct gets 18
+#blackjack(9,9,9) # correct gets BUST
+#blackjack(9,9,11) # correct gets 19
+
+
+# SUMMER OF '69: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 
+# and extending to the next 9 (every 6 will be followed by at least one 9). Return 0 for no numbers.
+# summer_69([1, 3, 5]) --> 9
+# summer_69([4, 5, 6, 7, 8, 9]) --> 9
+# summer_69([2, 1, 6, 9, 11]) --> 14
+
+#This problem was challenging until I used enumerate (my original try failed):
+def summer_69(nums):
+    if 6 in nums: # need to cut out part of list between 6 and 9
+        cut=[] # will store index values of 6 and 9
+
+        for c, value in enumerate(nums, 1): #https://book.pythontips.com/en/latest/enumerate.html
+            if value==6 or value==9: 
+                cut.append(c) #6 index will be added first (directions say 6 comes first)
+        start=int(cut[0]) # get index value of 6
+        end=int(cut[1]) # get index value of 9
+
+        delete=nums[start-1:end] #cut off the list between 6 and 9
+        summ_delete=sum(delete) #get value of deleted values
+        total=sum(nums) # get total of all values
+        print(total-summ_delete) # will print the solution
+    if 6 not in nums: # if there is no 6, no need to do the above
+        print(sum(nums)) # just sum the values
+    
+summer_69([1, 3, 5])
+     
+# summer_69([1, 3, 5])  # Correct returns 9
+# summer_69([4, 5, 6, 7, 8, 9]) # Correct returns 9
+# summer_69([2, 1, 6, 9, 11])  # Correct returns 14
+
+
+#### CHALLENGES #####
+
+# SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
+#  spy_game([1,2,4,0,0,7,5]) --> True
+#  spy_game([1,0,2,4,0,5,7]) --> True
+#  spy_game([1,7,2,0,4,5,0]) --> False
+
+def spy_game(nums):
+    bond=[] # will evenually store 0 and 7s
+    for n in nums: #go through each number
+        if n==0 or n==7: #only two numbers we need
+            bond.append(n) #put all 0 and 7 in array (in order) 
+    print(bond[0] )
+    for i in range( len(bond) -2 ): # -2 needed so do not throw an index error with bond[i+2] 
+        first=bond[i]
+        second=bond[i+1]
+        third=bond[i+2]
+        if first==0 and second==0 and third ==7:
+            return True
+    else: # if i range look does not find anything, 
+        return False
+        
+#spy_game([1,2,4,0,0,7,5]) # Correctly returns True
+#spy_game([1,0,2,4,0,5,7]) # Correctly returns True
+# spy_game([1,7,2,0,4,5,0]) # Correctly returns False
+
+
+
+# COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to and including a given number
+# I have seen this problem before in Project Euler 7 and 10. But was a good review for me.
+# Note: Sieves of Era is fastest way to get primes, but I cannot create it from memory.
+def primes(LIMIT):
+    n=3
+    primes=[2]
+
+    while n<LIMIT:
+        s=int(n**.5)+1
+        for d in range(2, s):
+            if n%d==0:
+                break
+        else:
+            primes.append(n)
+        n=n+2 # only need to check odd numbers
+    print( len(primes), primes )
+primes(50)
+# See below link on my GitHub how to do Sieves of Era:
+# https://github.com/ScottFrederickSchmidt/Project-Euler/blob/master/Problem10
+
+    
+            
+        
+        
+# Just for fun:
+# PRINT BIG: Write a function that takes in a single letter, and returns a 5x5 representation of that letter
+# print_big('a') #HINT: Consider making a dictionary of possible patterns, and mapping the alphabet to specific 5-line combinations of patterns. 
+# For purposes of this exercise, it's ok if your dictionary stops at "E".
+br = "\n" #br stands for break
+s='*' #s stands for star
+b=' ' #b stands for break
+
+print(b, s,  br, s, s, br, s, b, s) # capital letter 'A'
+# This last bonus problem seems like it is not very practical but I successfully made a capitalized "A".
+# It was a good review on how to do a break in a print statement as that does not happen often. 
