@@ -1,0 +1,91 @@
+# Object Oriented Methods, #Object Oriented Programming Homework Assignment:
+# https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/05-Object%20Oriented%20Programming/02-Object%20Oriented%20Programming%20Homework.ipynb
+
+
+#Problem 1
+#Fill in the Line class methods to accept coordinates as a pair of tuples and return the slope and distance of the line.
+
+class Line(object):
+    def __init__(self,coor1,coor2):
+        self.coor1=coor1
+        self.coor2=coor2
+    
+    def distance(self):
+        x1, y1=self.coor1
+        x2, y2=self.coor2
+        dist=(x2-x1)**2 + (y2-y1)**2 
+        dist=dist**.5
+        print(dist, "distance")
+    
+    def slope(self):
+        x1, y1=self.coor1
+        x2, y2=self.coor2
+        slope= (y2-y1) / (x2-x1)
+        print(slope, "slope")
+
+coordinate1 = (3,2)
+coordinate2 = (8,10)
+
+li = Line(coordinate1,coordinate2)
+li.distance()
+li.slope()
+
+
+#Problem 2: Fill in the class
+class Cylinder:
+    
+    def __init__(self,height=1,radius=1):
+        self.height=height
+        self.radius=radius
+        
+    def volume(self):
+        r=self.radius
+        h=self.height
+        v=(3.14)* (r**2) * h
+        print(v, "volume")
+    
+    def surface_area(self):
+        r=self.radius
+        h=self.height
+        s=2* 3.14 * r * (r+h)
+        print(s, "surface")
+
+# EXAMPLE OUTPUT
+c = Cylinder(2,3)
+c.volume()
+c.surface_area()
+
+
+####Object Oriented Programming Challenge
+#For this challenge, create a bank account class that has two attributes:
+#owner balance and two methods: deposit withdraw
+#As an added requirement, withdrawals may not exceed the available balance.
+# Instantiate your class, make several deposits and withdrawals, and test to make sure the account can't be overdrawn.
+
+class Account:
+    def __init__(self, name, balance=0):
+        self.name=name
+        self.balance=balance
+        
+    def __str__(self):
+        return f'Owner: {self.name} Balance:{self.balance}'
+        
+    def deposit(self, amount):
+        self.balance=self.balance+amount
+        print(amount,"Money deposited. New balance:", self.balance)
+    
+    def withdraw(self, take):
+        if self.balance>take:
+            self.balance=self.balance-take
+            print(take, "Money withdrawn. Remaining balance:", self.balance )
+        else:
+            print("Funds not available!")
+            
+account1=Account('Jose', 500) 
+print(account1) #Owner: Jose Balance:500
+print(account1.name) #Jose
+account1.withdraw(60) #60 Money withdrawn. Remaining balance: 440
+account1.deposit(100) #100 Money deposited. New balance: 540
+            
+# Need to attempt this challenge again, I had to look up the answer:            
+# https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/05-Object%20Oriented%20Programming/05-OOP%20Challenge%20-%20Solution.ipynb
