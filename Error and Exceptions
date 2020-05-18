@@ -1,0 +1,43 @@
+#Errors and Exceptions Homework:
+#https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/07-Errors%20and%20Exception%20Handling/02-Errors%20and%20Exceptions%20Homework.ipynb
+
+
+#Problem 1: Handle the exception thrown by the code below by using try and except blocks.
+for i in ['a','b','c']:
+    try:
+        print(i**2)
+    except:
+        print("Exception has occured..")
+
+
+
+#Problem 2
+#Handle the exception thrown by the code below by using try and except blocks. Then use a finally block to print 'All Done.'
+x = 5
+y = 0
+z = x/y
+try:
+    print(z)
+except:
+    print("Exception throw, zero division error?")
+finally:
+    print("All Done.")
+
+
+
+#Problem 3
+#Write a function that asks for an integer and prints the square of it. 
+#Use a while loop with a try, except, else block to account for incorrect inputs.
+def ask():
+    while True:
+        try:
+            n = int(input('Input an integer: '))
+        except:
+            print('An error occurred! Please try again!')
+        else:
+            break
+    print('Thank you, your number squared is: ',n**2)
+ask()
+# Input an integer: null
+# An error occurred! Please try again!
+# Input an integer: 2
