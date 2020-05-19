@@ -1,0 +1,68 @@
+# Python Generators, #Iterators and Generators Homework:
+# https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/11-Python%20Generators/02-Iterators%20and%20Generators%20Homework.ipynb
+
+#Problem 1
+#Create a generator that generates the squares of numbers up to some number N.
+def gensquares(n):
+    for i in range(n):
+        yield i**2
+
+for x in gensquares(10):
+    gensquares(x)
+
+
+
+
+
+#Problem 2
+#Create a generator that yields "n" random numbers between a low and high number (that are inputs). 
+#Note: Use the random library. For example:
+import random
+random.randint(1,10)
+
+def rand_num(low,high,n):
+    for i in range(n):
+        yield random.randint(low, high)
+
+for num in rand_num(1,10,12):
+    print(num)
+
+
+
+    
+#Problem 3
+#Use the iter() function to convert the string below into an iterator:
+s = 'hello'
+s=iter(s)
+print(next(s)) #'h'
+print(next(s)) #'e'
+
+#Example I found: https://www.programiz.com/python-programming/methods/built-in/iter
+vowels = ['a', 'e', 'i', 'o', 'u']
+vowels_iter = iter(vowels)
+
+print(next(vowels_iter))    # 'a'
+print(next(vowels_iter))    # 'e'
+
+
+
+
+#Problem 4
+#Explain a use case for a generator using a yield statement 
+#where you would not want to use a normal function with a return statement.
+
+answer="Normally you use a yield statement when a function takes a lot of memory."
+example="Some answers on Project Euler more advanced coders were using yield statements"
+link='https://www.geeksforgeeks.org/use-yield-keyword-instead-return-keyword-python/'
+
+
+#Extra Credit!
+#Can you explain what gencomp is in the code below?
+#Hint: Google generator comprehension!
+my_list = [1,2,3,4,5]
+
+gencomp = (item for item in my_list if item > 3)
+
+for item in gencomp:
+    print(item)
+# This code looks almost the eaxct same as a list comprehension where you return only certain values 
