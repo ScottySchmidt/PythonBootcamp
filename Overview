@@ -39,3 +39,13 @@ d_list(['a','b','c']) # {('A', '-', 'a')}
 
 
 
+
+
+Possible Issues:
+#Problem 2
+#Use reduce() to take a list of digits and return the number that they correspond to. For example, [1, 2, 3] corresponds
+#to one-hundred-twenty-three. Do not convert the integers to strings!
+
+
+
+
