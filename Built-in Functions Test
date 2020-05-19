@@ -1,0 +1,121 @@
+#Built-in Functions Test
+#https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/09-Built-in%20Functions/08-Built-in%20Functions%20Assessment%20Test.ipynb
+#For this test, you should use built-in functions and be able to write the requested functions in one line.
+
+
+#Problem 1
+#Use map() to create a function which finds the length of each word in the phrase (broken by spaces) and returns the values in a list.
+#The function will have an input of a string, and output a list of integers.
+
+def get_length(word):
+    return len(word)
+
+def word_lengths(string):
+    words=string.split(" ") #split at every space (word)
+    result=map(get_length, words) #still in object form
+    result=list(result) 
+    print(result)
+    
+word_lengths('How long are the words in this phrase') #[3, 4, 3, 3, 5, 2, 4, 6]
+
+#Sample map problem I found which helped me solve the problem above:
+#https://www.programiz.com/python-programming/methods/built-in/map
+def calculateSquare(n):
+    return n*n
+
+numbers = [1, 2, 3, 4]
+result = map(calculateSquare, numbers)
+print(result) # <map object at 0x00000174AA0F5390>
+numbersSquare = list(result)  #List is better than set? Will sometimes delete
+print(numbersSquare) # prints {16, 1, 4, 9}
+
+
+
+#Problem 2
+#Use reduce() to take a list of digits and return the number that they correspond to. For example, [1, 2, 3] corresponds
+#to one-hundred-twenty-three. Do not convert the integers to strings!
+
+
+#I was able to solve this problem initially using the str_sum function:
+from functools import reduce
+ 
+def do_sum(x1, x2): 
+    return x1 + x2
+
+def str_sum(x1, x2): 
+    return str(x1) + str(x2)
+
+def digits_to_num(digits):
+    return reduce(lambda x,y: x*10+y,digits) #had to look up this method 
+
+
+print(reduce(do_sum, [1, 2, 3, 4])) #returns 10; Adds numbers at intergers
+print(reduce(str_sum, [1, 2, 3, 4])) #returns 1234; Combines numbers as strings 
+print(digits_to_num([3,4,3,2,1]) ) #34321
+
+#So using reduce is frowned upon, rarely used, and is even being considered getting removed: 
+#https://stackoverflow.com/questions/181543/what-is-the-problem-with-reduce
+#Therefore, after using initial solution using str_sum I did not spend much more time on this problem.
+
+
+
+
+#Problem 3
+#Use filter to return the words from a list of words which start with a target letter.
+def filter_words(word_list, letter):
+    words=[]
+    for word in word_list: #get each word
+        if word[0]==letter: #get first index in word, if equal to letter:
+            words.append(word) #store word
+    print(words)
+l = ['hello','are','cat','dog','ham','hi','go','to','heart']
+filter_words(l,'h') #Correctly prings # ['hello', 'ham', 'hi', 'heart']
+
+
+
+
+#Problem 4
+#Use zip() and a list comprehension to return a list of the same length where each value is the two strings 
+#from L1 and L2 concatenated together with connector between them. Look at the example output below:
+
+# Good example: https://www.programiz.com/python-programming/online-compiler/?ref=5fb7723b
+def first_attempt(L1, L2, connector):
+    results=zip(L1, connector, L2)
+    print(set(results))
+
+def concatenate(word1, word2, connector):
+    return { word1+connector+word2 for (word1, word2) in zip(word1, word2) }
+
+first_attempt(['A','B'],['a','b'],'-') # [(0, 'a'), (1, 'b'), (2, 'c')]
+concatenate(['A','B'],['a','b'],'-')  #{'A-a', 'B-b'}
+# should return ['A-a', 'B-b']
+
+
+
+
+#Problem 5
+#Use enumerate() and other skills to return a dictionary which has the values of the list as keys and the index as the value. 
+#You may assume that a value will only appear once in the given list.
+def first_attempt(L):
+    e=enumerate(L)
+    print(list(e) )
+    
+#Correct Solution:
+def d_list(L):
+    return {v:k for v, k in enumerate(L)}
+        
+first_attempt(['a','b','c']) # prints [(0, 'a'), (1, 'b'), (2, 'c')] instead of {'a': 0, 'b': 1, 'c': 2}
+d_list(['a','b','c']) # {('A', '-', 'a')}
+
+
+
+
+#Problem 6
+#Use enumerate() and other skills from above to return the count of the number of items in the list whose value equals its index.
+def count_match_index(L):
+    enum=list(enumerate(L) ) 
+    for e in enum: #for each set in the list:
+        if e[0]==e[1]: #if the values match:
+            print(e) 
+
+count_match_index([0,2,2,1,5,5,6,10]) # Correctlly prints 0, 2, 5, and 6 as a match
