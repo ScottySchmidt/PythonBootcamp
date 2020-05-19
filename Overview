@@ -1,0 +1,27 @@
+#These following problems need to be attempted again:
+
+
+#Built-in Functions Test
+#https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/09-Built-in%20Functions/08-Built-in%20Functions%20Assessment%20Test.ipynb
+#For this test, you should use built-in functions and be able to write the requested functions in one line.
+
+#Problem 4
+#Use zip() and a list comprehension to return a list of the same length where each value is the two strings 
+#from L1 and L2 concatenated together with connector between them. Look at the example output below:
+
+def concatenate(L1, L2, connector):
+    pass
+
+
+concatenate(['A','B'],['a','b'],'-') # ['A-a', 'B-b']
+
+
+
+#Problem 5
+#Use enumerate() and other skills to return a dictionary which has the values of the list as keys and the index as the value. 
+#You may assume that a value will only appear once in the given list.
+
+def d_list(L):
+    pass
+        
+d_list(['a','b','c']) # {('A', '-', 'a')}
