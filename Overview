@@ -39,12 +39,23 @@ d_list(['a','b','c']) # {('A', '-', 'a')}
 
 
 
+#Project1 Tic-Tac-Toe: 
+#Considering I made a tic-tac-toe game in JavaScript a few years ago:
+#https://github.com/ScottFrederickSchmidt/FreeCodeCamp/blob/master/tic-tac-toe
+#I was shocked at how challenging this project was. I had to occasionally look at solutions manual which was disapointing,
+#So I should probably reattempt this project at a later date. 
+
+
 
 
 Possible Issues:
 #Problem 2
 #Use reduce() to take a list of digits and return the number that they correspond to. For example, [1, 2, 3] corresponds
 #to one-hundred-twenty-three. Do not convert the integers to strings!
+
+#So using reduce is frowned upon, rarely used, and is even being considered getting removed: 
+#https://stackoverflow.com/questions/181543/what-is-the-problem-with-reduce
+#Therefore, after using initial solution using str_sum I did not spend much more time on this problem.
 
 
 
