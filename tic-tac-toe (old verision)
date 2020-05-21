@@ -1,4 +1,4 @@
-#Working original verision! That needs some minor adjustments:
+#Working original verision! That needs some minor adjustments (will post a final version):
 #full_board_check is showing game is full and a draw on turn2 but not on turn 9?
 #Game does not fully stop running after a "win"
 #needs a replay function
