@@ -1,0 +1,41 @@
+# Final Capstone Project: 
+# https://github.com/Pierian-Data/Complete-Python-3-Bootcamp/blob/master/12-Final%20Capstone%20Python%20Project/02-Final%20Capstone%20Project%20Ideas.ipynb
+
+
+
+#Some of these I have already completed such as the five below. So intead, I am moving onto the Datascience Bootcamp:
+
+#1)Fibonacci Sequence-Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number.
+#https://github.com/ScottFrederickSchmidt/Project-Euler/blob/master/Problem%202
+
+#2)Prime Factorization - Have the user enter a number and find all Prime Factors (if there are any) and display them.
+#https://github.com/ScottFrederickSchmidt/Project-Euler/blob/master/Problem%203
+
+#3)Collatz Conjecture - Start with a number n > 1. Find the number of steps it takes to reach one using the following process: 
+#If n is even, divide it by 2. If n is odd, multiply it by 3 and add 1
+#https://github.com/ScottFrederickSchmidt/Project-Euler/blob/master/Problem14
+
+#4)Fetch Current Weather - Get the current weather for a given zip/postal code. Optional: Try locating the user automatically.
+# https://github.com/ScottFrederickSchmidt/Complete-Python3-Bootcamp/blob/master/weather%20scraper
+
+
+
+#Fizz Buzz - Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” 
+#instead of the number and for the multiples of five print “Buzz”. 
+#For numbers which are multiples of both three and five print “FizzBuzz”.
+
+for i in range(101):
+    if i %3==0:
+        print("Fizz")
+    elif i %5==0:
+        print("Buzz")
+    elif i%5==0 and i%3==0:
+        print("FizzBuzz")
+    else:
+        print(i)
+
+#Reverse a String - Enter a string and the program will reverse it and print it out.
+def reverse(string):
+    backwards=string[::-1]
+    return backwards
+reverse("hello")
