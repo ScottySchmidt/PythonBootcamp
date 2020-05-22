@@ -1,0 +1,18 @@
+#For the third project, one option was to do a weather sraper. I had already done this before and in my case I used selenium:
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+browser = webdriver.Chrome(executable_path=r"C:\Users\scott\Desktop\chromedriver_win32\chromedriver.exe")
+browser.get("https://weather.com/weather/tenday/l/e0abde3003a88dedecad92fedc96375000c16843287a51dbf2cd92f062217180")
+
+chicago_high=0
+for i in range(1, 16):
+    i=(str(i))
+    get_high = browser.find_elements_by_xpath('//*[@id="twc-scrollabe"]/table/tbody/tr['+i+']/td[4]/div/span[1]')[0]
+    string2=get_high.text
+    final2=string2.replace('°', '')
+    final2=int(final2)
+    print(final2)
+    chicago_high=chicago_high+final2
+print("chicago high:", chicago_high/15) 
