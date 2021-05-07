@@ -1,3 +1,6 @@
+#JavaScript VERSION! See below:
+#https://cdpn.io/ScottFSchmidt/debug/yLaoBQw/xJMjOewBRGXr
+
 #Find all possible combos:
 #https://www.online-python.com/
 import itertools
@@ -16,8 +19,6 @@ for L in range(0, len(stuff)+1):
             print(total)
             break
 print("Done;")
-
-
 
 =================================
 
