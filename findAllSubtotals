@@ -21,17 +21,3 @@ print("Done;")
 
 =================================
 
-
-stuff = [1, 2, 3, 4]
-findNum=7
-
-for L in range(0, len(stuff)+1):
-    for subset in itertools.combinations(stuff, L):
-        #print(subset)
-        #print(sum(subset))
-        total=sum(subset)
-        #print(total)
-        if total==findNum:
-            print(subset)
-            print(total)
-            break
